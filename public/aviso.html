@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="max-width:device-max-width. initial-scale=1.0">
+       <title>Aviso</title>
+       <link rel="stylesheet" href="style.css">
+       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark/dark.css">
+</head>
+
+<body id="body">
+       <div id="opcoes-calculos">
+              <br>
+              <h1>PROJEÇÃO DE <label class="highlight">AVISO PRÉVIO</label></h1>
+              <button type="button" class="alteradores" onclick="inicio()">INÍCIO</button>
+              <button type="button" class="alteradores" onclick="INSSano()">INSS</button>
+              <button type="button" class="alteradores" onclick="ConfIRRF()">IRRF</button>
+              <button type="button" class="alteradores" onclick="ConfFOL()">FOLHA</button>
+              <button type="button" class="alteradores" onclick="ConfHOR()">NOTURNAS</button>
+              <br><br>
+       </div>
+       <h2>Informe o Tipo de Aviso, a Quantidade de Dias e a Data Início para obter as projeções.</h2>
+       <p>Quando o Aviso for Trabalhado e a quantidade de dias for maior que 30, a Data do Desligamento será projetada com 30 dias, conforme Lei 12.506.</p>
+       <p>A contagem de ambas as projeções é feita a partir da Data Início.</p>
+       <br>
+       <div class="transaction-container" id="vinculo">
+              <div class="tabs">
+                     <input type="radio" id="rad-transaction-1" div-id="deposit" name="tipoAVI" checked />
+                     <label class="tab no-margin" for="rad-transaction-1">INDENIZADO</label>
+                     <input type="radio" id="rad-transaction-2" div-id="transfer" name="tipoAVI" />
+                     <label class="tab no-margin" for="rad-transaction-2">TRABALHADO</label>
+                     <span class="glider"></span>
+              </div>
+       </div>
+       <br>
+       <div class="container">
+              <div class="box">
+                     <div class="aviso">
+                            <p class="opcoes-aviso">Data Início do Aviso Prévio</p>
+                            <input type="date" id="inicioAVI" class="inputsavi" placeholder="">
+                            <p class="opcoes-aviso">Quantidade de Dias de Aviso</p>
+                            <input type="number" id="diasAVI" class="inputsavi" placeholder="Dias de AVI">
+                     </div>
+                     <div class="result">
+                            <p class="opcoes-aviso">Data do Desligamento</p>
+                            <input type="date" id="desligamento" class="inputsavi" placeholder="" disabled="">
+                            <p class="opcoes-aviso">Projeção do Aviso Total</p>
+                            <input type="date" id="projecao" class="inputsavi" placeholder="" disabled="">
+                     </div>
+
+              </div>
+       </div>
+       <br><br><br>
+       <div id="acao">
+              <button class="acao" onclick="calcular()">CALCULAR</button>
+              <button class="acao" onclick="limpar()">LIMPAR</button>
+       </div>
+       <footer class="footer">
+              <p>&copy; Hugnei.Junior</p>
+       </footer>
+       <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+       <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+       <script src="infoCalc.js"></script>
+       <script src="script.js"></script>
+       <script src="scriptAVI.js"></script>
+</body>
+
+</html>

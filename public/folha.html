@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="max-width:device-max-width. initial-scale=1.0">
+       <title>Folha</title>
+       <link rel="stylesheet" href="style.css">
+       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark/dark.css">
+</head>
+
+<body>
+       <div id="opcoes-calculos">
+              <br>
+              <h1>CÁLCULO DE <label class="highlight">FOLHA</label></h1>
+              <button type="button" class="alteradores" onclick="inicio()">INÍCIO</button>
+              <button type="button" class="alteradores" onclick="INSSano()">INSS</button>
+              <button type="button" class="alteradores" onclick="ConfIRRF()">IRRF</button>
+              <button type="button" class="alteradores" onclick="ConfAVI()">AVISO</button>
+              <button type="button" class="alteradores" onclick="ConfHOR()">NOTURNAS</button>
+              <br><br>
+       </div>
+       <div id="inputs">
+              <input type="number" id="salbase" class="inputs" placeholder="Salário Bruto" step="0.01" min="0.01" max="99999">
+              <input type="number" id="outrosdesc" class="inputs" placeholder="Descontos" step="0.01" min="0.01" max="99999">
+              <input type="number" id="qtddependente" class="inputs" placeholder="Dependentes" step="1" min="1" max="10">
+       </div>
+       <div class="parametros">
+              <div class="params">
+                     <p class="opcoes-folha">Outros Descontos incidem em Impostos?</p>
+                     <div class="transaction-container" id="incimposto">
+                            <div class="tabs">
+                                   <input type="radio" id="rad-transaction-1" div-id="deposit" name="incimposto" checked />
+                                   <label class="tab no-margin" for="rad-transaction-1">SIM</label>
+                                   <input type="radio" id="rad-transaction-2" div-id="transfer" name="incimposto" />
+                                   <label class="tab no-margin" for="rad-transaction-2">NÃO</label>
+                                   <span class="glider"></span>
+                            </div>
+                     </div>
+              </div>
+              <div class="params">
+                     <p class="opcoes-folha">Qual o vínculo do contribuinte?</p>
+                     <div class="transaction-container">
+                            <div class="tabs">
+                                   <input type="radio" id="rad-transaction-3" div-id="deposit" name="vinculo" checked onclick="mostrarContrato()" />
+                                   <label class="tab no-margin" for="rad-transaction-3">SEGURADO</label>
+                                   <input type="radio" id="rad-transaction-4" div-id="transfer" name="vinculo" onclick="ocultarContrato()" />
+                                   <label class="tab no-margin" for="rad-transaction-4">INDIVIDUAL</label>
+                                   <span class="glider"></span>
+                            </div>
+                     </div>
+              </div>
+              <div id="contrato" class="params">
+                     <p class="opcoes-folha">Qual o contrato do segurado?</p>
+                     <div class="transaction-container">
+                            <div class="tabs">
+                                   <input type="radio" id="rad-transaction-5" div-id="deposit" name="contrato" checked />
+                                   <label class="tab no-margin" for="rad-transaction-5">EMPREGADO CLT</label>
+                                   <input type="radio" id="rad-transaction-6" div-id="transfer" name="contrato" />
+                                   <label class="tab no-margin" for="rad-transaction-6">MENOR APRENDIZ</label>
+                                   <span class="glider"></span>
+                            </div>
+                     </div>
+              </div>
+       </div>
+       <div id="acao">
+              <br><br><br>
+              <button class="acao" onclick="calcularFolha(2022)">CALCULAR</button>
+              <button class="acao" onclick="limpar()">LIMPAR</button>
+       </div>
+       <div id="modal-resultados" class="modal-container">
+              <div class="modal" id="modal">
+                     <input value="X" type="button" class="close" onclick="resultadosoff()"></input>
+                     <table class="tabelas-resultado" align="center">
+                            <tr>
+                                   <td class="topo-resumo-valores" align="center"><strong>SALÁRIO BRUTO (+)</strong></td>
+                                   <td class="topo-resumo-valores" id="salbruto" align="center"><strong></strong></td>
+                                   <td class="topo-resumo-valores" align="center"><strong>BASE DE IRRF</strong></td>
+                                   <td class="topo-resumo-valores" id="bcirrf" align="center"><strong></strong></td>
+                            </tr>
+                            <tr>
+                                   <td class="topo-resumo-valores" align="center"><strong>BASE DE FGTS</strong></td>
+                                   <td class="topo-resumo-valores" id="bcfgts" align="center"><strong></strong></td>
+                                   <td id="td06" align="center">Dependente IRRF</td>
+                                   <td id="depirrf" align="center"></td>
+                            </tr>
+                            <tr>
+                                   <td id="td14" align="center">Alíquota FGTS</td>
+                                   <td id="alifgts" align="center"></td>
+                                   <td id="td08" align="center">Alíquota IRRF</td>
+                                   <td id="aliirrf" align="center"></td>
+                            </tr>
+                            <tr>
+                                   <td id="td12" align="center">Recolhimento FGTS (*)</td>
+                                   <td id="recfgts" align="center"></td>
+                                   <td id="td10" align="center">Dedução IRRF</td>
+                                   <td id="dedirrf" align="center"></td>
+                            </tr>
+                            <tr>
+                                   <td class="topo-resumo-valores" align="center"><strong>BASE DE INSS</strong></td>
+                                   <td class="topo-resumo-valores" id="bcinss" align="center"><strong></strong></td>
+                                   <td id="td12" align="center">Desconto IRRF (-)</td>
+                                   <td id="descirrf" align="center"></td>
+                            </tr>
+                            <tr>
+                                   <td id="td04" align="center">Alíquota Efetiva INSS</td>
+                                   <td id="aliinss" align="center"></td>
+                                   <td id="td12" align="center">Outros Descontos (-)</td>
+                                   <td id="descontos" align="center"></td>
+                            </tr>
+                            <tr>
+                                   <td id="td12" align="center">Desconto INSS (-)</td>
+                                   <td id="descinss" align="center"></td>
+                                   <td class="topo-resumo-valores" align="center"><strong>LÍQUIDO A RECEBER</strong></td>
+                                   <td class="topo-resumo-valores" id="liqrec" align="center"><strong></strong></td>
+                            </tr>
+                     </table>
+              </div>
+       </div>
+       <footer class="footer">
+              <p>&copy; Hugnei.Junior</p>
+       </footer>
+       <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+       <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+       <script src="infoCalc.js"></script>
+       <script src="script.js"></script>
+       <script src="scriptFOL.js"></script>
+</body>
+
+</html>

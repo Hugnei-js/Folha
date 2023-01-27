@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="max-width:device-max-width. initial-scale=1.0">
+       <title>INSS</title>
+       <link rel="stylesheet" href="style.css">
+       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark/dark.css">
+</head>
+
+<body>
+       <div id="inssano">
+              <div id="titulo">
+                     <br><br><br>
+                     <h1>TABELAS DE INSS</h1>
+                     <h2>Qual o ano de apuração?</h2>
+                     <br><br><br>
+              </div>
+              <div class="container">
+              <div id="card">
+                     <button class="card" onclick="ConfINSS(2022)">INSS 2022</button>
+                     <button class="card" onclick="ConfINSS(2021)">INSS 2021</button>
+                     <button class="card" onclick="ConfINSS(2020)">INSS 2020</button><br>
+                     <button class="acao" onclick="inicio()">VOLTAR</button>
+              </div>
+              </div>
+       </div>
+       <div id="calculoinss" style="display: none;">
+              <div id="opcoes-calculos">
+                     <br>
+                     <h1>CÁLCULO DE <label class="highlight">INSS</label> - <label id="anoCalculo" class="highlight"></label></h1>
+                     <button type="button" class="alteradores" onclick="inicio()">INÍCIO</button>
+                     <button type="button" class="alteradores" onclick="ConfIRRF()">IRRF</button>
+                     <button type="button" class="alteradores" onclick="ConfFOL()">FOLHA</button>
+                     <button type="button" class="alteradores" onclick="ConfAVI()">AVISO</button>
+                     <button type="button" class="alteradores" onclick="ConfHOR()">NOTURNAS</button>
+                     <br><br>
+              </div>
+              <div id="tabela-limites">
+                     <table class="tabela-limites">
+                            <tr>
+                                   <td><strong>VALOR LIMITE</strong></td>
+                                   <td><strong>ALÍQUOTA</strong></td>
+                            </tr>
+                            <tr>
+                                   <td id="limite1"></td>
+                                   <td id="aliquota1"></td>
+                            </tr>
+                            <tr>
+                                   <td id="limite2"></td>
+                                   <td id="aliquota2"></td>
+                            </tr>
+                            <tr>
+                                   <td id="limite3"></td>
+                                   <td id="aliquota3"></td>
+                            </tr>
+                            <tr>
+                                   <td id="limite4"></td>
+                                   <td id="aliquota4"></td>
+                            </tr>
+                            <tr>
+                                   <td id="limite5"></td>
+                                   <td id="aliquota5"></td>
+                            </tr>
+                     </table>
+              </div>
+              <div class="transaction-container" id="vinculo">
+                     <div class="tabs">
+                            <input type="radio" id="rad-transaction-1" div-id="deposit" name="vinculo" checked />
+                            <label class="tab no-margin" for="rad-transaction-1">SEGURADO</label>
+                            <input type="radio" id="rad-transaction-2" div-id="transfer" name="vinculo" />
+                            <label class="tab no-margin" for="rad-transaction-2">INDIVIDUAL</label>
+                            <span class="glider"></span>
+                     </div>
+              </div>
+              <div id="inputs">
+                     <input type="number" id="bcinss1" class="inputs" placeholder="Base INSS I" step="0.01" min="0.01" max="99999">
+                     <input type="number" id="bcinss2" class="inputs" placeholder="Base INSS II" step="0.01" min="0.01" max="99999">
+                     <input type="number" id="inssretido" class="inputs" placeholder="INSS Retido" step="0.01" min="0.01" max="99999">
+              </div>
+              <div id="acao">
+                     <button class="acao" onclick="calcular()">CALCULAR</button>
+                     <button class="acao" onclick="limpar()">LIMPAR</button>
+              </div>
+              <div id="modal-resultados" class="modal-container">
+                     <div class="modal" id="modal">
+                            <button class="close" onclick="resultadosoff()">X</button>
+                            <table class="tabelas-resultado" align="center">
+                                   <tr>
+                                          <td align="left"><strong>DETALHAMENTO DO CÁLCULO</strong></td>
+                                          <td align="left" font-size="50pt"><strong>VALORES APURADOS</strong></td>
+                                   </tr>
+                                   <tr>
+                                          <td id="result" align="left">Detalhamento do cálculo.</td>
+                                          <td id="valores" align="left">Valores apurados.</td>
+                                   </tr>
+                            </table>
+                     </div>
+              </div>
+       </div>
+       <footer>
+              <p>&copy; Hugnei.Junior</p>
+       </footer>
+       <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+       <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+       <script src="infoCalc.js"></script>
+       <script src="script.js"></script>
+       <script src="scriptINSS.js"></script>
+</body>
+
+</html>
