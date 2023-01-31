@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>INSS</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+    <header class="hero" id="header"></header>
+    <article class="content">
+        <div class="menu" id="menu"></div>
+
+        <div class="container">
+            <div class="control has-icons-left">
+                <div class="select is-success">
+                    <select class="select-item" id="inssYear">
+                    </select>
+                    <div class="icon is-small is-left">
+                        <i class="bi bi-calendar-fill"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content" id="calculoinss">
+            <table class="table is-dark">
+                <thead>
+                    <tr>
+                        <th>Valor Limite</th>
+                        <th>Alíquota</th>
+                    </tr>
+                </thead>
+                <tbody id="inssTable"></tbody>
+            </table>
+
+            <div class="control">
+                <label class="radio">
+                    <input type="radio" name="vinculo" value="segurado" checked>Segurado
+                </label>
+                <label class="radio">
+                    <input type="radio" name="vinculo" value="individual">Individual
+                </label>
+            </div>
+
+            <div>
+                <input type="number" id="base-1" class="text" placeholder="Base INSS I" step="0.01" min="0.01"
+                    max="99999">
+                <input type="number" id="base-2" class="text" placeholder="Base INSS II" step="0.01" min="0.01"
+                    max="99999">
+                <input type="number" id="retido" class="text" placeholder="INSS Retido" step="0.01" min="0.01"
+                    max="99999">
+            </div>
+
+            <div>
+                <button class="acao" onclick="calcular()">CALCULAR</button>
+                <button class="acao" onclick="limpar()">LIMPAR</button>
+            </div>
+
+            <button class="js-modal-trigger" data-target="modal-resultados">
+                Open JS example modal
+            </button>
+
+            <div class="modal" id="modal-resultados">
+                <div class="modal-background"></div>
+                <div class="modal-card">
+                    <header class="modal-card-head">
+                        <p class="modal-card-title">Resultados</p>
+                        <button class="delete" aria-label="close"></button>
+                    </header>
+                    <section class="modal-card-body">
+                        <div id="resultados"></div>
+                        <div id="valores"></div>
+                    </section>
+                    <footer class="modal-card-foot">
+                        <button class="button btn btn-dark">Fechar</button>
+                    </footer>
+                </div>
+            </div>
+
+            <div id="modal-resultados" class="modal-container">
+                <div class="modal" id="modal">
+                    <button class="close" onclick="resultadosoff()">X</button>
+                    <table class="tabelas-resultado" align="center">
+                        <tr>
+                            <td align="left"><strong>DETALHAMENTO DO CÁLCULO</strong></td>
+                            <td align="left" font-size="50pt"><strong>VALORES APURADOS</strong></td>
+                        </tr>
+                        <tr>
+                            <td id="result" align="left">Detalhamento do cálculo.</td>
+                            <td id="valores" align="left">Valores apurados.</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </article>
+    <footer id="footer"></footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <script src="./assets/js/modalController.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/infoCalc.js"></script>
+    <script src="./assets/js/inss.js"></script>
+    <script>
+        getHeader("CÁLCULO DE INSS", "");
+        getFooter();
+        getMenu("inss");
+        populateINSS();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+.modal-card-title {
+    color: var(--text-primary);
+}
+
+.modal-card-body {
+    background-color: var(--bg-general);
+}
+
+.modal-card-head {
+    border-bottom: 1px solid black;
+}
+
+.modal-card-foot {
+    border-top: 1px solid black;
+}
+
+.modal-card-head, .modal-card-foot {
+    background-color: var(--bg-header);
+}
+
+.btn-dark {
+    background-color: var(--primary);
+    border-color: black;
+}

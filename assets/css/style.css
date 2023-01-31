@@ -1,0 +1,94 @@
+@import url("https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css");
+@import url("https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@5/dark.css");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
+@import url("./modal.css");
+@import url("./folha.css");
+
+:root {
+    --bg-general: rgb(35, 35, 35);
+    --bg-header: rgb(30, 30, 30);
+    --primary: rgb(135, 255, 0);
+    --text-primary: white;
+    --default-font: 'Calibri';
+    --default-font-size: 15pt;
+    --default-border: rgba(255, 255, 255, 0);
+}
+
+* {
+    font-family: var(--default-font);
+    font-size: var(--default-font-size);
+    color: var(--text-primary);
+    text-align: center;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-general);
+}
+
+header {
+    background-color: var(--bg-header);
+}
+
+footer {
+    background-color: var(--bg-header);
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    height: 7px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 10px rgba(127, 127, 127, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--bg-header);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--bg-header);
+}
+
+.content {
+    flex: 1;
+    margin: auto;
+}
+
+.btn:hover{
+    filter: brightness(65%);
+    transition: .5s;
+}
+
+.btn:active {
+    position: relative;
+    top: 2px;
+}
+
+.menu {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+}
+
+.select-item {
+    background-color: var(--bg-general) !important;
+    color: var(--text-primary) !important;
+}
+
+.text {
+    border-left: 15px solid;
+    border-right: 15px solid;
+    border-left-color: var(--default-border);
+    border-right-color: var(--default-border);
+    border-top-color: var(--default-border);
+    font-size: 20pt;
+    margin: 30px 10px;
+    background: none;
+    color: var(--text-primary);
+}
